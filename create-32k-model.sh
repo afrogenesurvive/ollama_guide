@@ -47,4 +47,4 @@ ollama create ${CUSTOM_NAME} -f /tmp/Modelfile-${CUSTOM_NAME}
 rm /tmp/Modelfile-${CUSTOM_NAME}
 
 echo "✅ Model ${CUSTOM_NAME} created successfully"
-echo "Run it with: ollama run ${CUSTOM_NAME}"
+echo "Use this model from your desktop app or Copilot configuration."

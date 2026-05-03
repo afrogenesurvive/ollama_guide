@@ -1,64 +1,43 @@
 # ollama_guide
 
-how to setup and run models with ollama locally
+Local Ollama setup for creating a 32K-context model and using it from desktop tools.
 
-# Terminal 1: Start Ollama server (one-time per session)
+## Scope
 
-ollama serve
+This repo no longer includes request logging or CLI prompt workflows.
+Use your model from:
 
-# Or if using the app, just ensure it's running in menu bar
+- Ollama desktop app
+- Copilot/client integrations that connect to your local Ollama instance
 
-# Terminal 2: Verify your model is available
+## 1) Ensure Ollama is running
 
-ollama list
+If you use the desktop app, just make sure it is open.
 
-# Should show: my-gemma4-32k (or whatever you named it)
+## 2) Create a 32K model (one-time)
 
----
-
-# Add this to your ~/.zshrc to start Ollama automatically when you open a terminal:
-
-# Auto-start Ollama if not running
-
-if ! pgrep -x "ollama" > /dev/null; then
-open -a Ollama
-
-# If using the app # Or: ollama serve > /dev/null 2>&1 &
-
-fi
-
----
-
-# Step 1: Create your 32K model (one-time only)
-
+```bash
+chmod +x ./create-32k-model.sh
 ./create-32k-model.sh gemma4:e2b my-gemma4-32k
+```
 
-# make executable chmod +x create-32k-model.sh
+You can also build from other base models:
 
-# This creates a permanent model called my-gemma4-32k that always uses 32K context.
+```bash
+./create-32k-model.sh llama3.2:3b
+./create-32k-model.sh qwen2.5-coder:7b
+```
 
-# Or other models
+## 3) Use it from your desktop app or Copilot
 
-# ./create-32k-model.sh llama3.2:3b
+Select the created model (for example, `my-gemma4-32k`) in your app/integration settings.
 
-# ./create-32k-model.sh qwen2.5-coder:7b
+## Optional: auto-open Ollama app in shell sessions
 
-# Step 2: Run the logging script whenever you want to use it
+Add this to your `~/.zshrc` if desired:
 
-./ollama-with-logging.sh my-gemma4-32k my-session.log
-
-# make excutable chmod +x ollama-with-logging.sh
-
-# Combined execute
-
-./ollama-32k-logged.sh gemma4:e2b
-
-sh ollama-32k-logged.sh gemma4:e2b --no-log
-
-# make excutable chmod +x ollama-32k-logged.sh
-
-# check running models
-
-ollama ps
-
-<!-- lsof -i :11434 -->
+```bash
+if ! pgrep -x "ollama" > /dev/null; then
+	open -a Ollama
+fi
+```
