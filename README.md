@@ -53,14 +53,12 @@ fi
 
 ./ollama-32k-logged.sh gemma4:e2b
 
+sh ollama-32k-logged.sh gemma4:e2b --no-log
+
 # make excutable chmod +x ollama-32k-logged.sh
 
 # check running models
 
 ollama ps
 
-Model Size (Params) RAM Usage (4-bit) Performance Tier Code-Specific Strengths
-GLM-4.7-9B 9B ~6.5 GB Highest (Local GOAT) Best for complex refactoring and agentic workflows. Outperforms all Qwen 3.5 models.
-Qwen3-Coder-Next-8B 8B ~5.2 GB Very High Optimized for agentic coding. Fits comfortably in 8GB RAM.
-Qwen2.5-Coder-7B 7B ~3.6 GB High Excellent general-purpose coding. Fits comfortably with room for code context.
-DeepSeek-Coder-V2-Lite-7B 7B ~4.9 GB High Better for complex debugging and reasoning tasks.
+<!-- lsof -i :11434 -->
