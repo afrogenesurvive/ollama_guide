@@ -19,6 +19,7 @@ If you use the desktop app, just make sure it is open.
 ```bash
 chmod +x ./create-32k-model.sh
 ./create-32k-model.sh gemma4:e2b my-gemma4-32k
+./create-32k-model.sh deepseek-coder-v2:lite my-deepseek-coder-v2-32k
 ```
 
 You can also build from other base models:
@@ -26,6 +27,7 @@ You can also build from other base models:
 ```bash
 ./create-32k-model.sh llama3.2:3b
 ./create-32k-model.sh qwen2.5-coder:7b
+./create-32k-model.sh deepseek-coder-v2:lite my-deepseek-coder-v2-32k
 ```
 
 ## 3) Use it from your desktop app or Copilot
